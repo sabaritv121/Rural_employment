@@ -22,7 +22,7 @@
       <th scope="col">EMAIL</th>
         <th scope="col">ADDRESS</th>
         <th scope="col">AADHAR</th>
-        <th scope="col">PROFILE PIC</th>
+        <th scope="col">RESUME</th>
         <th scope="col">DELETE</th>
 
 
@@ -38,7 +38,13 @@
         <td>{{i.email}}</td>
         <td>{{i.address}}</td>
         <td>{{i.adhar_number}}</td>
-        <td><img src="{{ i.profile_pic.url }}" /></td>
+<td>
+<!--<img src="{{ i.Resume.url }}" style="width:100px; height:100px;"/>-->
+        <a href="{{ i.Resume.url }}" download>
+        <button>Download</button>
+        </a
+       </td>
+
 
         <td>
 

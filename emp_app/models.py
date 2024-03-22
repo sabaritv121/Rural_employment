@@ -15,7 +15,7 @@ class users(models.Model):
     email = models.EmailField()
     address = models.TextField()
     adhar_number = models.CharField(max_length=16)
-    profile_pic = models.FileField(upload_to='profilepic/')
+    Resume = models.FileField(upload_to='Resume/')
 
     def __str__(self):
         return self.name
