@@ -38,11 +38,11 @@
                     <td>{{n.schedule.end_date}}</td>
                     <td>
                         {% if n.status == 0 %}
-                          <button type="button" class="btn btn-warning">Approval Pending</button>
+                          <button type="button" class="btn btn-warning">Pending</button>
                         {% elif n.status == 1 %}
-                        <button type="button" class="btn btn-success">Booking Confirmed</button>
+                        <button type="button" class="btn btn-success">selected</button>
                          {% else %}
-                        <button type="button" class="btn btn-danger">Sorry..no slots available</button>
+                        <button type="button" class="btn btn-danger">Application rejected</button>
  {% endif %}
 
 
@@ -63,7 +63,6 @@
 window.mytest = function()
 { var isValid = confirm('Are you sure Want to Delete ?');if (!isValid) { event.preventDefault();
   }}
-
 
 
 
