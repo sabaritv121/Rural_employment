@@ -78,5 +78,18 @@ class Appointment(models.Model):
     user = models.ForeignKey(users, on_delete=models.CASCADE, related_name='appointment')
     schedule = models.ForeignKey(AppointmentSchedule, on_delete=models.CASCADE)
     status = models.IntegerField(default=0)
+    status2 = models.IntegerField(default=0)
+
+
+class CreateWork(models.Model):
+    work = models.ForeignKey(Appointment, on_delete=models.DO_NOTHING, related_name='work')
+    stat = (('started', 'started'), ('50% done', '50% done'), ('completed', 'completed'))
+    status = models.CharField(max_length=50, choices=stat, default='Pending', null=True)
+    description = models.CharField(max_length=500, null=False)
+
+    Total_fund = models.CharField(max_length=10,default=0,null=True)
+    paystat = (('Advance paid ','Advance paid'),('Payment completed', 'Payment completed'))
+    statuspay = models.CharField(max_length=50, choices=paystat, default='Not paid', null=True)
+
 
 

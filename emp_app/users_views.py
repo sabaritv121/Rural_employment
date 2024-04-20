@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from emp_app.forms import FeedbackForm
-from emp_app.models import Notification, Complaints, AppointmentSchedule, users, Appointment
+from emp_app.models import Notification, Complaints, AppointmentSchedule, users, Appointment, CreateWork
 
 
 def view_notification(request):
@@ -66,3 +66,9 @@ def appointments(request):
     u = users.objects.get(user=request.user)
     a = Appointment.objects.filter(user=u)
     return render(request, 'users/cus_appointment.html', {'appointment': a})
+
+
+def view_works(request):
+    data = CreateWork.objects.all()
+    return render(request,'users/work.html',{'data':data})
+

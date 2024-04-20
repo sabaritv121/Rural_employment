@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
-from emp_app.forms import ScheduleAdd
-from emp_app.models import Notification, AddScheme, AppointmentSchedule, Panchayath, Appointment
+from emp_app.forms import ScheduleAdd, WorkForm
+from emp_app.models import Notification, AddScheme, AppointmentSchedule, Panchayath, Appointment, CreateWork
 
 
 def notification(request):
@@ -47,7 +47,7 @@ def schedule(request):
 def schedule_delete(request, id):
     data = AppointmentSchedule.objects.get(id=id)
     data.delete()
-    messages.info(request, ' Deleted Successfully')
+    messages.info(request, 'Deleted Successfully')
     return redirect('schedule_view')
 
 
@@ -84,4 +84,41 @@ def reject_appointment(request, id):
     return redirect('appointment_panchayath')
 
 
+def Creatework(request,id):
 
+        data= Appointment.objects.get(id=id)
+        print(data)
+        form = WorkForm()
+
+        if request.method == 'POST':
+            form = WorkForm(request.POST)
+            if form.is_valid():
+                data.status2 = 1
+                data.save()
+
+                obj = form.save(commit=False)
+                obj.work = data
+                obj.save()
+                data.status = 1
+                data.save()
+
+                messages.info(request, 'Work created')
+                return redirect('/')
+        return render(request, 'panchayath/work_add.html', {'form': form})
+
+
+def view_work(request):
+    data = CreateWork.objects.all()
+    return render(request,'panchayath/work.html',{'data':data})
+
+
+def update(request,id):
+    n = CreateWork.objects.get(id=id)
+    if request.method == 'POST':
+        form = WorkForm(request.POST, instance=n)
+        if form.is_valid():
+            form.save()
+            return redirect('view_work')
+    else:
+        form = WorkForm(instance=n)
+    return render(request, 'panchayath/update.html', {'form': form})

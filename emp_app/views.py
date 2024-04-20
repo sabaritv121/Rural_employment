@@ -23,13 +23,13 @@ def login_view(request):
         if user is not None:
             login(request,user)
             if user.is_staff:
-                print("okk")
+
                 return redirect('admin_dash')
             elif user.is_users:
-                print("user")
+
                 return redirect('user_dashboard')
             elif user.is_panchayath:
-                print("is_panchayath")
+
                 return redirect ('panchayath_dashboard')
 
 

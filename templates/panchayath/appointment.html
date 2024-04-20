@@ -2,7 +2,7 @@
 {% extends "panchayath.html" %}
 {% block content %}
 
-<div class="col-lg-10">
+<div class="col-lg-12">
     {% for message in messages %}
     <div class="alert alert-primary" role="alert">
         {{message}}
@@ -68,6 +68,14 @@
                         {% else %}
                         <button type="button" class="btn btn-danger">Rejected</button>
                         {% endif %}
+                    </td>
+                    <td>
+                         {% if n.status2 == 0 %}
+                        <a href = "{% url 'Creatework' n.id %}" class="btn btn-success">Create work</a>
+                        {% elif n.status2 == 1 %}
+                        work created
+                         {% endif %}
+
                     </td>
                 </tr>
 

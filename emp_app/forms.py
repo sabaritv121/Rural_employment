@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from emp_app.models import Notification, users, Panchayath, Login_view, Complaints, AddScheme, AppointmentSchedule
+from emp_app.models import Notification, users, Panchayath, Login_view, Complaints, AddScheme, AppointmentSchedule, \
+    CreateWork
 
 
 class LoginRegister(UserCreationForm):
@@ -66,3 +67,11 @@ class ScheduleAdd(forms.ModelForm):
         model = AppointmentSchedule
         fields = ('scheme', 'start_date','end_date','designation','qualifications')
         exclude = ('user',)
+
+
+class WorkForm(forms.ModelForm):
+
+    class Meta:
+        model = CreateWork
+        fields = ('__all__')
+        exclude = ('work',)

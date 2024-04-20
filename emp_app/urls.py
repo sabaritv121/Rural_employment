@@ -40,6 +40,7 @@ urlpatterns = [
     path('schedule_cus',users_views.schedule_cus,name='schedule_cus'),
     path('take_appointment/<int:id>/',users_views.take_appointment, name='take_appointment'),
     path('appointments', users_views.appointments, name='appointments'),
+    path("works",users_views.view_works,name='view_works'),
 
     #panchayath
 
@@ -52,4 +53,7 @@ urlpatterns = [
     path('appointment_panchayath', panchayath_views.appointment_panchayath, name='appointment_panchayath'),
     path('approve_appointment/<int:id>/', panchayath_views.approve_appointment, name='approve_appointment'),
     path('reject_appointment/<int:id>/', panchayath_views.reject_appointment, name='reject_appointment'),
+    path('Creatework/<int:id>/',panchayath_views.Creatework,name='Creatework'),
+    path("work",panchayath_views.view_work,name='view_work'),
+    path('update/<int:id>/',panchayath_views.update,name='update'),
 ]
