@@ -85,6 +85,7 @@ class CreateWork(models.Model):
     work = models.ForeignKey(Appointment, on_delete=models.DO_NOTHING, related_name='work')
     stat = (('started', 'started'), ('50% done', '50% done'), ('completed', 'completed'))
     status = models.CharField(max_length=50, choices=stat, default='Pending', null=True)
+    work_file_number = models.CharField(max_length=5)
     description = models.CharField(max_length=500, null=False)
 
     Total_fund = models.CharField(max_length=10,default=0,null=True)

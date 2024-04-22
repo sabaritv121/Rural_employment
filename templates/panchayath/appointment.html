@@ -65,14 +65,14 @@
 
                         <button type="button" class="btn btn-success">Approved</button>
 
-                        {% else %}
+                        {% elif n.status == 2 %}
                         <button type="button" class="btn btn-danger">Rejected</button>
                         {% endif %}
                     </td>
                     <td>
-                         {% if n.status2 == 0 %}
+                         {% if n.status == 1 %}
                         <a href = "{% url 'Creatework' n.id %}" class="btn btn-success">Create work</a>
-                        {% elif n.status2 == 1 %}
+                        {% elif n.status == 3 %}
                         work created
                          {% endif %}
 

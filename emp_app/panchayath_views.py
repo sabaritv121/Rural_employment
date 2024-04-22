@@ -93,22 +93,24 @@ def Creatework(request,id):
         if request.method == 'POST':
             form = WorkForm(request.POST)
             if form.is_valid():
-                data.status2 = 1
+                data.status2 = 2
                 data.save()
 
                 obj = form.save(commit=False)
                 obj.work = data
                 obj.save()
-                data.status = 1
+                data.status = 3
                 data.save()
 
                 messages.info(request, 'Work created')
-                return redirect('/')
+                return redirect('appointment_panchayath')
         return render(request, 'panchayath/work_add.html', {'form': form})
 
 
 def view_work(request):
-    data = CreateWork.objects.all()
+    u = request.user
+    data = CreateWork.objects.filter(work__schedule__user__user = u)
+
     return render(request,'panchayath/work.html',{'data':data})
 
 

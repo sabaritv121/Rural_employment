@@ -69,6 +69,10 @@ def appointments(request):
 
 
 def view_works(request):
-    data = CreateWork.objects.all()
+    u = request.user
+    print(u)
+    data = CreateWork.objects.filter(work__user__user= u)
+    # data = CreateWork.objects.all()
+
     return render(request,'users/work.html',{'data':data})
 

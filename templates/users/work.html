@@ -18,10 +18,11 @@
 
     <tr>
       <th scope="col">SL NO</th>
-
+        <th scope="col">DESIGNATION</th>
       <th scope="col">STATUS</th>
         <th scope="col">USER</th>
         <th scope="col">DESCRIPTION</th>
+        <th scope="col">WORK FILE NUMBER</th>
          <th scope="col">TOTAL FUND</th>
         <th scope="col">PAYMENT</th>
 
@@ -33,11 +34,14 @@
   {% for i in data %}
     <tr>
         <td>{{forloop.counter}}</td>
+        <td>{{i.work.schedule.designation}}</td>
         <td>{{i.status}}</td>
 <td>{{i.work.user}}</td>
         <td>{{i.description}}</td>
+          <td>{{i.work_file_number}}</td>
         <td>{{i.Total_fund}}</td>
         <td>{{i.statuspay}}</td>
+
 
 
 
